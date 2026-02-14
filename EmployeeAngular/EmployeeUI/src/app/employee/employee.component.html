@@ -1,0 +1,392 @@
+<!-- <div class="container mt-4">
+
+  <div class="d-flex justify-content-between align-items-center mb-3">
+
+    <h2 class="fw-bold text-primary">
+      Employee Management
+    </h2>
+
+    <div class="d-flex gap-2">
+
+      <button class="btn btn-warning px-4"
+              (click)="openDepartmentPopup()">
+        + Add Department
+      </button>
+
+      <button class="btn btn-success px-4"
+              (click)="openAddPopup()">
+        + Add Employee
+      </button>
+
+    </div>
+  </div>
+
+
+  <div class="card shadow-lg rounded-4">
+    <div class="card-body">
+
+      <table class="table table-hover align-middle">
+
+        <thead class="table-dark">
+          <tr>
+            <th>Employee Id</th>
+            <th>Name</th>
+            <th>Department</th>
+            <th>Salary</th>
+            <th style="width: 200px;">Actions</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let emp of employees">
+
+            <td>{{ emp.employeeId }}</td>
+            <td>{{ emp.employeeName }}</td>
+            <td>{{ emp.departmentName }}</td>
+            <td>₹ {{ emp.salary }}</td>
+
+            <td>
+              <button class="btn btn-sm btn-primary me-2"
+                      (click)="openEditPopup(emp)">
+                Edit
+              </button>
+
+              <button class="btn btn-sm btn-danger"
+                      (click)="openDeletePopup(emp)">
+                Delete
+              </button>
+            </td>
+
+          </tr>
+        </tbody>
+
+      </table>
+
+    </div>
+  </div>
+</div>
+
+<div class="popup-overlay" *ngIf="showPopup">
+
+  <div class="popup-card shadow-lg">
+
+    <h4 class="fw-bold mb-3 text-center">
+      {{ isEditMode ? "Edit Employee" : "Add Employee" }}
+    </h4>
+
+    <form [formGroup]="employeeForm">
+
+      <input class="form-control mb-2"
+             type="text"
+             formControlName="employeeId"
+             placeholder="Employee Code">
+
+      <input class="form-control mb-2"
+             type="text"
+             formControlName="employeeName"
+             placeholder="Employee Name">
+
+      <select class="form-control mb-2"
+              formControlName="departmentId">
+
+        <option value="">-- Select Department --</option>
+
+        <option *ngFor="let dept of departments"
+                [value]="dept.tblDepartmentId">
+          {{ dept.departmentName }}
+        </option>
+      </select>
+
+      <input class="form-control mb-3"
+             type="number"
+             formControlName="salary"
+             placeholder="Salary">
+
+      <div class="text-end">
+
+        <button class="btn btn-secondary me-2"
+                type="button"
+                (click)="closePopup()">
+          Cancel
+        </button>
+
+        <button class="btn btn-success"
+                type="button"
+                (click)="saveEmployee()">
+          {{ isEditMode ? "Update" : "Save" }}
+        </button>
+
+      </div>
+
+    </form>
+  </div>
+</div>
+
+<div class="popup-overlay" *ngIf="showDeletePopup">
+
+  <div class="popup-card shadow-lg text-center">
+
+    <h4 class="text-danger fw-bold mb-3">
+      Confirm Delete
+    </h4>
+
+    <p>
+      Are you sure you want to delete
+      <b>{{ employeeToDelete?.employeeName }}</b> ?
+    </p>
+
+    <div class="d-flex justify-content-center gap-3 mt-3">
+
+      <button class="btn btn-secondary px-4"
+              (click)="closeDeletePopup()">
+        No
+      </button>
+
+      <button class="btn btn-danger px-4"
+              (click)="confirmDelete()">
+        Yes
+      </button>
+
+    </div>
+  </div>
+</div>
+
+<div class="popup-overlay" *ngIf="showDepartmentPopup">
+
+  <div class="popup-card shadow-lg">
+
+    <h4 class="fw-bold mb-3 text-center text-warning">
+      Add Department
+    </h4>
+
+    <form [formGroup]="departmentForm">
+
+      <input class="form-control mb-3"
+             type="text"
+             formControlName="departmentName"
+             placeholder="Enter Department Name">
+
+      <div class="text-end">
+
+        <button class="btn btn-secondary me-2"
+                type="button"
+                (click)="closeDepartmentPopup()">
+          Cancel
+        </button>
+
+        <button class="btn btn-warning"
+                type="button"
+                (click)="saveDepartment()">
+          Save Department
+        </button>
+
+      </div>
+
+    </form>
+  </div>
+</div> -->
+<div class="container mt-4">
+  <!-- HEADER -->
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="fw-bold" style="color: #2c3e50;">
+      <i class="bi bi-people-fill me-2"></i>
+      Employee Management
+    </h2>
+
+    <div class="d-flex gap-2">
+      <button class="btn btn-outline-warning px-4" (click)="openDepartmentPopup()">
+        <i class="bi bi-building-add me-2"></i>Add Department
+      </button>
+
+      <button class="btn btn-success px-4" (click)="openAddPopup()">
+        <i class="bi bi-person-plus-fill me-2"></i>Add Employee
+      </button>
+    </div>
+  </div>
+
+  <div class="card border-0 shadow-sm">
+    <div class="card-body p-0">
+      <div class="table-responsive">
+        <table class="table table-hover align-middle mb-0">
+          <thead class="bg-light">
+            <tr>
+              <th class="px-4 py-3 text-muted">Employee ID</th>
+              <th class="py-3 text-muted">Name</th>
+              <th class="py-3 text-muted">Department</th>
+              <th class="py-3 text-muted">Salary</th>
+              <th class="py-3 text-muted text-center">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let emp of employees" class="border-bottom">
+              <td class="px-4 py-3 fw-medium">{{ emp.employeeId }}</td>
+              <td class="py-3">{{ emp.employeeName }}</td>
+              <td class="py-3">
+                <span class="badge bg-purple text-dark px-3 py-2 round">
+                  {{ emp.departmentName }}
+                </span>
+              </td>
+              <td class="py-3 fw-medium">₹ {{ emp.salary | number }}</td>
+              <td class="py-3 text-center">
+                <button class="btn btn-sm btn-link text-primary p-0 me-3" (click)="openEditPopup(emp)">
+                  <i class="bi bi-pencil-square me-1"></i>Edit
+                </button>
+                <button class="btn btn-sm btn-link text-danger p-0" (click)="openDeletePopup(emp)">
+                  <i class="bi bi-trash3 me-1"></i>Delete
+                </button>
+              </td>
+            </tr>
+            <tr *ngIf="!employees?.length">
+              <td colspan="5" class="text-center py-5 text-muted">
+                <i class="bi bi-inbox fs-1 d-block mb-3"></i>
+                No employees found
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+    <div class="d-flex justify-content-between align-items-center mt-3">
+  <p class="text-muted mb-0">
+    Page {{ currentPage }} of {{ totalPages }}
+  </p>
+
+  <nav>
+    <ul class="pagination mb-0">
+      <li class="page-item" [class.disabled]="currentPage === 1">
+        <button class="page-link" (click)="prevPage()">Prev</button>
+      </li>
+      <li class="page-item"
+          *ngFor="let page of [].constructor(totalPages); let i = index"
+          [class.active]="currentPage === i + 1">
+
+        <button class="page-link" (click)="goToPage(i + 1)">
+          {{ i + 1 }}
+        </button>
+
+      </li>
+
+      <li class="page-item" [class.disabled]="currentPage === totalPages">
+        <button class="page-link" (click)="nextPage()">Next</button>
+      </li>
+
+    </ul>
+  </nav>
+
+</div>
+</div>
+
+<div class="popup-overlay" *ngIf="showPopup">
+  <div class="popup-card">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h4 class="fw-bold mb-0" [class.text-success]="!isEditMode" [class.text-primary]="isEditMode">
+        <i class="bi" [class.bi-person-plus-fill]="!isEditMode" [class.bi-pencil-square]="isEditMode" class="me-2"></i>
+        {{ isEditMode ? "Edit Employee" : "Add Employee" }}
+      </h4>
+      <button class="btn-close" (click)="closePopup()"></button>
+    </div>
+
+    <form [formGroup]="employeeForm">
+      <div class="mb-3">
+        <label class="form-label text-muted small mb-1">Employee ID</label>
+        <input class="form-control" type="text" formControlName="employeeId" placeholder="e.g., EMP001">
+        <small *ngIf="employeeForm.get('employeeId')?.touched && employeeForm.get('employeeId')?.invalid" class="text-danger">
+          Employee ID is required
+        </small>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label text-muted small mb-1">Full Name</label>
+        <input class="form-control" type="text" formControlName="employeeName" placeholder="e.g., John Doe">
+        <small *ngIf="employeeForm.get('employeeName')?.touched && employeeForm.get('employeeName')?.invalid" class="text-danger">
+          Name is required
+        </small>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label text-muted small mb-1">Department</label>
+        <select class="form-select" formControlName="departmentId">
+          <option value="" disabled selected>-- Select Department --</option>
+          <option *ngFor="let dept of departments" [value]="dept.tblDepartmentId">
+            {{ dept.departmentName }}
+          </option>
+        </select>
+      </div>
+
+      <div class="mb-4">
+        <label class="form-label text-muted small mb-1">Salary</label>
+        <input class="form-control" type="number" formControlName="salary" placeholder="e.g., 50000">
+        <small *ngIf="employeeForm.get('salary')?.touched && employeeForm.get('salary')?.invalid" class="text-danger">
+          Salary is required
+        </small>
+      </div>
+
+      <div class="d-flex gap-2 justify-content-end">
+        <button class="btn btn-light" type="button" (click)="closePopup()">
+          Cancel
+        </button>
+        <button class="btn" [class.btn-success]="!isEditMode" [class.btn-primary]="isEditMode" 
+                type="button" (click)="saveEmployee()" [disabled]="employeeForm.invalid">
+          <i class="bi" [class.bi-check-lg]="!isEditMode" [class.bi-arrow-repeat]="isEditMode" class="me-2"></i>
+          {{ isEditMode ? "Update" : "Save" }}
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+<div class="popup-overlay" *ngIf="showDeletePopup">
+  <div class="popup-card text-center">
+    <div class="mb-4">
+      <div class="bg-danger bg-opacity-10 rounded-circle d-inline-flex p-3 mb-3">
+        <i class="bi bi-exclamation-triangle-fill text-danger fs-3"></i>
+      </div>
+      <h4 class="fw-bold">Confirm Delete</h4>
+      <p class="text-muted mb-0">
+        Are you sure you want to delete<br>
+        <span class="fw-bold text-dark">{{ employeeToDelete?.employeeName }}</span>?
+      </p>
+    </div>
+
+    <div class="d-flex gap-2 justify-content-center">
+      <button class="btn btn-light px-4" (click)="closeDeletePopup()">
+        Cancel
+      </button>
+      <button class="btn btn-danger px-4" (click)="confirmDelete()">
+        <i class="bi bi-trash3 me-2"></i>Delete
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="popup-overlay" *ngIf="showDepartmentPopup">
+  <div class="popup-card">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h4 class="fw-bold mb-0 text-warning">
+        <i class="bi bi-building-add me-2"></i>
+        Add Department
+      </h4>
+      <button class="btn-close" (click)="closeDepartmentPopup()"></button>
+    </div>
+
+    <form [formGroup]="departmentForm">
+      <div class="mb-4">
+        <label class="form-label text-muted small mb-1">Department Name</label>
+        <input class="form-control" type="text" formControlName="departmentName" placeholder="e.g., Human Resources">
+        <small *ngIf="departmentForm.get('departmentName')?.touched && departmentForm.get('departmentName')?.invalid" class="text-danger">
+          Department name is required
+        </small>
+      </div>
+
+      <div class="d-flex gap-2 justify-content-end">
+        <button class="btn btn-light" type="button" (click)="closeDepartmentPopup()">
+          Cancel
+        </button>
+        <button class="btn btn-warning" type="button" (click)="saveDepartment()" [disabled]="departmentForm.invalid">
+          <i class="bi bi-check-lg me-2"></i>Save Department
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+

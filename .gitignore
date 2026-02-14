@@ -1,0 +1,19 @@
+## Build outputs
+bin/
+obj/
+
+## Configuration files
+appsettings.json
+appsettings.Development.json
+
+## Visual Studio files
+.vs/
+*.user
+*.suo
+*.userprefs
+
+## VS Code
+.vscode/
+
+## User-specific files
+*.csproj.user

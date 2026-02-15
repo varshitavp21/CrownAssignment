@@ -6,6 +6,9 @@ passowrd : admin
 
 I have used my local server sqk machine to connect to the server ,
 In the Angular also , I have used the local api links for the API integration perpose.
+IF you want to clone the project then in your local code , the sps and the database as EmployeeManagement should be present and if u have connecting to a server in the appsetting.json the server name also needs to be changed to ur local server . And in the local server all the below tables and sps should be present if u want to run the code locally . 
+
+Similary , for the running the angular code as well. If the local apis links should be changed to your local apis endpoint and the visual studito should be running while the angular code is also running.
 
 Employee - contains the Backend code 
 EmployeeAngular - contains the Frontend code .

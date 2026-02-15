@@ -7,6 +7,9 @@ passowrd : admin
 I have used my local server sqk machine to connect to the server ,
 In the Angular also , I have used the local api links for the API integration perpose.
 
+Employee - contains the Backend code 
+EmployeeAngular - contains the Frontend code .
+
 Sql Scehma and tables ans sps 
 
 

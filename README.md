@@ -4,6 +4,9 @@ Login Cred
 Email : varshita@gmail.com
 passowrd : admin 
 
+I have used my local server sqk machine to connect to the server ,
+In the Angular also , I have used the local api links for the API integration perpose.
+
 Sql Scehma and tables ans sps 
 
 

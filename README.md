@@ -588,10 +588,33 @@ To validate the user I have implemented the Authorization for the Employee , Dep
 
 
 
-
 <img width="1884" height="879" alt="image" src="https://github.com/user-attachments/assets/c9681855-22ed-4395-af6b-e43234670995" />
 
+while clicking on the add of the Employee a add popup is created 
+<img width="1843" height="844" alt="image" src="https://github.com/user-attachments/assets/3183f341-bdbd-4f18-9e2e-cb403c4d18a1" />
 
+similarly while editing also a edit popup is created 
+
+<img width="1783" height="762" alt="image" src="https://github.com/user-attachments/assets/2d875e2c-d327-4830-a0da-86dabc2d8b75" />
+
+while deleting of the employee also a confirmation popup to confirm are you sure you want to delete the Employee popup is created with the EmployeeName
+
+<img width="707" height="416" alt="image" src="https://github.com/user-attachments/assets/41a57053-cb0d-48f3-b34f-c8e38e1858b3" />
+
+I have also integrated the Add APi for the Department also so that a newly added Department can be mapped to the employee .
+On the click of Add of Department a popup of add is created .
+<img width="687" height="327" alt="image" src="https://github.com/user-attachments/assets/0970e124-e994-43eb-88e3-e0b64e621e7a" />
+
+In the frontend I have implemented the Pagination as well for the GetEmployee listing page 
+
+<img width="1574" height="73" alt="image" src="https://github.com/user-attachments/assets/1bc39c32-91f4-4548-85c6-3d6e6a4f218e" />
+<img width="1669" height="461" alt="image" src="https://github.com/user-attachments/assets/ff2a5b33-e07d-48b5-a718-e9c446d23623" />
+
+By defult 10 records will come . The pagination is handled in SP level (Backend)
+
+
+
+I have implemented API intergration of Employee Add , Edit ,Delete (soft delete ),Get (with Pagination) ,Department (Add) 
 
 
 
